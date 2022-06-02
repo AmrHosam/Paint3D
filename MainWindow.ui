@@ -20,6 +20,12 @@
     </item>
     <item>
      <widget class="QGroupBox" name="groupBox">
+      <property name="maximumSize">
+       <size>
+        <width>350</width>
+        <height>16777215</height>
+       </size>
+      </property>
       <property name="title">
        <string>3D Shapes</string>
       </property>
@@ -28,7 +34,7 @@
         <rect>
          <x>40</x>
          <y>390</y>
-         <width>256</width>
+         <width>271</width>
          <height>24</height>
         </rect>
        </property>
@@ -51,13 +57,12 @@
           <property name="text">
            <string>Sphere</string>
           </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QRadioButton" name="cube_radioBtn">
-          <property name="text">
-           <string>Cube</string>
+          <property name="checked">
+           <bool>true</bool>
           </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
          </widget>
         </item>
         <item>
@@ -65,6 +70,9 @@
           <property name="text">
            <string>Cone</string>
           </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
          </widget>
         </item>
         <item>
@@ -72,6 +80,19 @@
           <property name="text">
            <string>Cylinder</string>
           </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="cube_radioBtn">
+          <property name="text">
+           <string>Cube</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">buttonGroup</string>
+          </attribute>
          </widget>
         </item>
        </layout>
@@ -99,7 +120,7 @@
         </property>
         <layout class="QVBoxLayout" name="verticalLayout">
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="10,0">
            <item>
             <widget class="QLabel" name="xPosition_lbl">
              <property name="text">
@@ -117,7 +138,7 @@
           </layout>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="10,0">
            <item>
             <widget class="QLabel" name="yPosition_lbl">
              <property name="text">
@@ -135,7 +156,7 @@
           </layout>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_6">
+          <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="10,0">
            <item>
             <widget class="QLabel" name="zPosition_lbl">
              <property name="text">
@@ -158,61 +179,239 @@
       <widget class="QStackedWidget" name="stackedWidget">
        <property name="geometry">
         <rect>
-         <x>120</x>
-         <y>220</y>
-         <width>120</width>
-         <height>80</height>
+         <x>40</x>
+         <y>240</y>
+         <width>271</width>
+         <height>111</height>
         </rect>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>2</number>
        </property>
        <widget class="QWidget" name="Sphere">
-        <widget class="QWidget" name="layoutWidget">
+        <widget class="QGroupBox" name="groupBox_3">
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>20</y>
-           <width>91</width>
-           <height>24</height>
+           <y>0</y>
+           <width>271</width>
+           <height>111</height>
           </rect>
          </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_2">
-          <item>
-           <widget class="QLabel" name="sphereRadius_lbl">
-            <property name="text">
-             <string>sphere</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QDoubleSpinBox" name="sphereRadius_spinBox"/>
-          </item>
-         </layout>
+         <property name="title">
+          <string>Sphere</string>
+         </property>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>50</y>
+            <width>231</width>
+            <height>24</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="10,0">
+           <item>
+            <widget class="QLabel" name="sphereRadius_lbl">
+             <property name="text">
+              <string>Radius</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="sphereRadius_spinBox">
+             <property name="maximum">
+              <double>100.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="Cone">
+        <widget class="QGroupBox" name="groupBox_5">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>271</width>
+           <height>111</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Cone</string>
+         </property>
+         <widget class="QWidget" name="layoutWidget_2">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>50</y>
+            <width>231</width>
+            <height>24</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="10,0">
+           <item>
+            <widget class="QLabel" name="coneRadius_lbl">
+             <property name="text">
+              <string>Radius</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="coneRadius_spinBox">
+             <property name="maximum">
+              <double>100.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
         </widget>
        </widget>
        <widget class="QWidget" name="Cylinder">
-        <widget class="QWidget" name="layoutWidget">
+        <widget class="QGroupBox" name="groupBox_4">
          <property name="geometry">
           <rect>
-           <x>10</x>
-           <y>20</y>
-           <width>105</width>
-           <height>24</height>
+           <x>0</x>
+           <y>0</y>
+           <width>271</width>
+           <height>111</height>
           </rect>
          </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_7">
-          <item>
-           <widget class="QLabel" name="label">
-            <property name="text">
-             <string>ff</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QDoubleSpinBox" name="doubleSpinBox"/>
-          </item>
-         </layout>
+         <property name="title">
+          <string>Cylinder</string>
+         </property>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>30</y>
+            <width>231</width>
+            <height>56</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_2">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="10,0">
+             <item>
+              <widget class="QLabel" name="cylinderRadius_lbl">
+               <property name="text">
+                <string>Radius</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QDoubleSpinBox" name="cylinderRadius_spinBox">
+               <property name="maximum">
+                <double>100.000000000000000</double>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="10,0">
+             <item>
+              <widget class="QLabel" name="cylinderLength_lbl">
+               <property name="text">
+                <string>Length</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QDoubleSpinBox" name="cylinderLength_spinBox">
+               <property name="maximum">
+                <double>100.000000000000000</double>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="Cube">
+        <widget class="QGroupBox" name="groupBox_6">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>271</width>
+           <height>111</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Cube</string>
+         </property>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>20</y>
+            <width>231</width>
+            <height>86</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_11" stretch="10,0">
+             <item>
+              <widget class="QLabel" name="cubeLength1_lbl">
+               <property name="text">
+                <string>L1</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QDoubleSpinBox" name="cubeLength1_spinBox">
+               <property name="maximum">
+                <double>100.000000000000000</double>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="10,0">
+             <item>
+              <widget class="QLabel" name="cubeLength2_lbl">
+               <property name="text">
+                <string>L2</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QDoubleSpinBox" name="cubeLength2_spinBox">
+               <property name="maximum">
+                <double>100.000000000000000</double>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_12" stretch="10,0">
+             <item>
+              <widget class="QLabel" name="cubeLength3_lbl">
+               <property name="text">
+                <string>L3</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QDoubleSpinBox" name="cubeLength3_spinBox">
+               <property name="maximum">
+                <double>100.000000000000000</double>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
         </widget>
        </widget>
       </widget>
@@ -241,4 +440,7 @@
  </customwidgets>
  <resources/>
  <connections/>
+ <buttongroups>
+  <buttongroup name="buttonGroup"/>
+ </buttongroups>
 </ui>
