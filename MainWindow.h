@@ -27,6 +27,7 @@ private:
 
 public slots:
 	void onDrawSphereClick();
+	void onRadioBtnChecked(int);
 };
 
 #endif // MAINWINDOW_H

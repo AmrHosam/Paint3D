@@ -10,8 +10,12 @@ MainWindow::MainWindow(QWidget *parent) :
 	mInteractorStyle(vtkSmartPointer<vtkInteractorStyleTrackballCamera>::New())
 {
 	ui->setupUi(this);
-	ui->sphere_radioBtn->setChecked(true);
-	ui->stackedWidget->setCurrentIndex(0);
+	ui->buttonGroup->setId(ui->sphere_radioBtn, 0);
+	ui->buttonGroup->setId(ui->cone_radioBtn, 1);
+	ui->buttonGroup->setId(ui->cylinder_radioBtn, 2);
+	ui->buttonGroup->setId(ui->cube_radioBtn, 3);
+	ui->stackedWidget->setCurrentIndex(ui->buttonGroup->checkedId());
+
 	// Set up the rendering
 	mRenderWindow->AddRenderer(mRenderer);
 	mRenderWindow->SetInteractor(mInteractor);
@@ -25,6 +29,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	// Set the UI connections
 	QObject::connect(ui->drawSphere_button, &QPushButton::clicked,
 		this, &MainWindow::onDrawSphereClick);
+	QObject::connect(ui->buttonGroup, static_cast<void(QButtonGroup::*)(int)>(&QButtonGroup::buttonClicked), this, &MainWindow::onRadioBtnChecked);
 }
 
 MainWindow::~MainWindow()
@@ -50,4 +55,11 @@ void MainWindow::onDrawSphereClick() {
 		cout << "CUBE\n";
 	else if (ui->cylinder_radioBtn->isChecked())
 		cout << "Cylinder\n";
+
+	cout<<"CLICKED:: "<<ui->buttonGroup->checkedId()<<"\n";
+}
+
+void MainWindow::onRadioBtnChecked(int id) {
+	cout << id << "\n";
+	ui->stackedWidget->setCurrentIndex(id);
 }
