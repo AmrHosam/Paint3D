@@ -6,6 +6,11 @@
 #include <vtkRenderer.h>
 #include <QVTKInteractor.h>
 #include <vtkInteractorStyleTrackballCamera.h>
+#include <vtkSphereSource.h>
+#include <vtkPolyDataMapper.h>
+#include <vtkActor.h>
+#include <vtkProperty.h>
+#include "Shape.h"
 
 namespace Ui {
 	class MainWindow;
@@ -16,6 +21,7 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
+	Shape* createShape(int);
     ~MainWindow();
 
 private:
@@ -26,7 +32,7 @@ private:
 	vtkSmartPointer<vtkInteractorStyleTrackballCamera> mInteractorStyle;
 
 public slots:
-	void onDrawSphereClick();
+	void onDrawClicked();
 	void onRadioBtnChecked(int);
 };
 

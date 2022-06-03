@@ -1,5 +1,11 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
+#include <QColorDialog>
+#include <QString>
+#include "Sphere.h"
+#include "Cone.h"
+#include "Cylinder.h"
+#include "Cube.h"
 
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),
@@ -27,8 +33,8 @@ MainWindow::MainWindow(QWidget *parent) :
 	mRenderer->SetBackground(1, 1, 1);
 
 	// Set the UI connections
-	QObject::connect(ui->drawSphere_button, &QPushButton::clicked,
-		this, &MainWindow::onDrawSphereClick);
+	QObject::connect(ui->draw_button, &QPushButton::clicked,
+		this, &MainWindow::onDrawClicked);
 	QObject::connect(ui->buttonGroup, static_cast<void(QButtonGroup::*)(int)>(&QButtonGroup::buttonClicked), this, &MainWindow::onRadioBtnChecked);
 }
 
@@ -37,26 +43,37 @@ MainWindow::~MainWindow()
 	delete ui;
 }
 
-void MainWindow::onDrawSphereClick() {
-	double r = ui->sphereRadius_spinBox->value();
-	cout << "the radius = " << r << "\n";
+Shape* MainWindow::createShape(int type) {
+	double x = ui->xPosition_spinBox->value();
+	double y = ui->yPosition_spinBox->value();
+	double z = ui->zPosition_spinBox->value();
+	switch (type)
+	{
+	case 0 :
+		return new Sphere(x, y, z, ui->sphereRadius_spinBox->value());
+	case 1 :
+		return new Cone(x, y, z, ui->coneRadius_spinBox->value(), ui->coneLength_spinBox->value());
+	case 2 :
+		return new Cylinder(x, y, z, ui->cylinderRadius_spinBox->value(), ui->cylinderLength_spinBox->value());
+	case 3 :
+		return new Cube(x, y, z, ui->cubeLength1_spinBox->value(), ui->cubeLength2_spinBox->value(), ui->cubeLength3_spinBox->value());
+	default:
+		return new Sphere();
+	}
+}
+
+void MainWindow::onDrawClicked() {
 	double x = ui->xPosition_spinBox->value();
 	cout << "the x = " << x << "\n";
 	double y = ui->yPosition_spinBox->value();
 	cout << "the y = " << y << "\n";
 	double z = ui->zPosition_spinBox->value();
 	cout << "the z = " << z << "\n";
-
-	if (ui->sphere_radioBtn->isChecked())
-		cout << "SPHERE\n";
-	else if (ui->cone_radioBtn->isChecked())
-		cout << "CONE\n";
-	else if (ui->cube_radioBtn->isChecked())
-		cout << "CUBE\n";
-	else if (ui->cylinder_radioBtn->isChecked())
-		cout << "Cylinder\n";
-
-	cout<<"CLICKED:: "<<ui->buttonGroup->checkedId()<<"\n";
+	Shape* shape = createShape(ui->buttonGroup->checkedId());
+	vtkSmartPointer<vtkActor> actor = shape->getActor();
+	mRenderer->AddActor(actor);
+	mRenderer->ResetCamera();
+	mRenderWindow->Render();
 }
 
 void MainWindow::onRadioBtnChecked(int id) {

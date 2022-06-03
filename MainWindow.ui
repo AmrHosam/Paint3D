@@ -29,11 +29,11 @@
       <property name="title">
        <string>3D Shapes</string>
       </property>
-      <widget class="QPushButton" name="drawSphere_button">
+      <widget class="QPushButton" name="draw_button">
        <property name="geometry">
         <rect>
          <x>40</x>
-         <y>390</y>
+         <y>400</y>
          <width>271</width>
          <height>24</height>
         </rect>
@@ -180,7 +180,7 @@
        <property name="geometry">
         <rect>
          <x>40</x>
-         <y>240</y>
+         <y>220</y>
          <width>271</width>
          <height>111</height>
         </rect>
@@ -242,29 +242,51 @@
          <property name="title">
           <string>Cone</string>
          </property>
-         <widget class="QWidget" name="layoutWidget_2">
+         <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
             <x>20</x>
-            <y>50</y>
+            <y>30</y>
             <width>231</width>
-            <height>24</height>
+            <height>56</height>
            </rect>
           </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="10,0">
+          <layout class="QVBoxLayout" name="verticalLayout_4">
            <item>
-            <widget class="QLabel" name="coneRadius_lbl">
-             <property name="text">
-              <string>Radius</string>
-             </property>
-            </widget>
+            <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="10,0">
+             <item>
+              <widget class="QLabel" name="coneRadius_lbl">
+               <property name="text">
+                <string>Radius</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QDoubleSpinBox" name="coneRadius_spinBox">
+               <property name="maximum">
+                <double>100.000000000000000</double>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </item>
            <item>
-            <widget class="QDoubleSpinBox" name="coneRadius_spinBox">
-             <property name="maximum">
-              <double>100.000000000000000</double>
-             </property>
-            </widget>
+            <layout class="QHBoxLayout" name="horizontalLayout_13" stretch="10,0">
+             <item>
+              <widget class="QLabel" name="coneLength_lbl">
+               <property name="text">
+                <string>Length</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QDoubleSpinBox" name="coneLength_spinBox">
+               <property name="maximum">
+                <double>100.000000000000000</double>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </item>
           </layout>
          </widget>
