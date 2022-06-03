@@ -33,6 +33,7 @@ private:
 
 public slots:
 	void onDrawClicked();
+	void onColorClicked();
 	void onRadioBtnChecked(int);
 };
 

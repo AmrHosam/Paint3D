@@ -35,6 +35,8 @@ MainWindow::MainWindow(QWidget *parent) :
 	// Set the UI connections
 	QObject::connect(ui->draw_button, &QPushButton::clicked,
 		this, &MainWindow::onDrawClicked);
+	QObject::connect(ui->color_button, &QPushButton::clicked,
+		this, &MainWindow::onColorClicked);
 	QObject::connect(ui->buttonGroup, static_cast<void(QButtonGroup::*)(int)>(&QButtonGroup::buttonClicked), this, &MainWindow::onRadioBtnChecked);
 }
 
@@ -71,6 +73,12 @@ void MainWindow::onDrawClicked() {
 	cout << "the z = " << z << "\n";
 	Shape* shape = createShape(ui->buttonGroup->checkedId());
 	vtkSmartPointer<vtkActor> actor = shape->getActor();
+	int r = 255, g = 0, b = 0;
+	QColor color = ui->color_button->palette().background().color();
+	if (color.isValid()) {
+		color.getRgb(&r, &g, &b);
+	}
+	actor->GetProperty()->SetColor(r/255.0, g/255.0, b/255.0);
 	mRenderer->AddActor(actor);
 	mRenderer->ResetCamera();
 	mRenderWindow->Render();
@@ -79,4 +87,18 @@ void MainWindow::onDrawClicked() {
 void MainWindow::onRadioBtnChecked(int id) {
 	cout << id << "\n";
 	ui->stackedWidget->setCurrentIndex(id);
+}
+
+void MainWindow::onColorClicked() {
+	int r = 0;
+	int g = 0;
+	int b = 0;
+	QColor color = QColorDialog::getColor();
+	if (color.isValid()) {
+		color.getRgb(&r, &g, &b);
+		cout << r << "  " << g << "  " << b << "\n";
+		std::string styleSheet = "background-color: rgb(" + std::to_string(r) + ", " + std::to_string(g) + ", " + std::to_string(b) + ");";
+		ui->color_button->setStyleSheet(QString::fromUtf8(styleSheet.c_str()));
+	}
+
 }
