@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>880</width>
+    <height>682</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -545,6 +545,32 @@
         </size>
        </property>
       </widget>
+      <widget class="QTableWidget" name="shapes_table">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>490</y>
+         <width>271</width>
+         <height>101</height>
+        </rect>
+       </property>
+       <property name="columnCount">
+        <number>2</number>
+       </property>
+       <attribute name="horizontalHeaderStretchLastSection">
+        <bool>true</bool>
+       </attribute>
+       <column>
+        <property name="text">
+         <string>ID</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>NAME</string>
+        </property>
+       </column>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -554,7 +580,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>880</width>
      <height>22</height>
     </rect>
    </property>
