@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	mInteractorStyle(vtkSmartPointer<vtkInteractorStyleTrackballCamera>::New())
 {
 	ui->setupUi(this);
+	QMainWindow::showMaximized();
 	ui->buttonGroup->setId(ui->sphere_radioBtn, 0);
 	ui->buttonGroup->setId(ui->cone_radioBtn, 1);
 	ui->buttonGroup->setId(ui->cylinder_radioBtn, 2);
