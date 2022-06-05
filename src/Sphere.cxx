@@ -23,7 +23,6 @@ vtkSmartPointer<vtkPolyDataMapper> Sphere::getMapper() {
 	return mapper;
 }
 
-vtkSmartPointer<vtkActor> Sphere::getActor() {
+void Sphere::setupShape() {
 	actor->SetMapper(getMapper());
-	return actor;
 }

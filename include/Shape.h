@@ -17,11 +17,12 @@ public:
 	double getZ() const;
 	int getID() const;
 	std::string getName() const;
+	vtkSmartPointer<vtkActor> getActor() const;
 	void setX(double);
 	void setY(double);
 	void setZ(double);
 	virtual void update() = 0;
-	virtual vtkSmartPointer<vtkActor> getActor() = 0;
+	virtual void setupShape() = 0;
 	virtual ~Shape();
 protected:
 	double x;

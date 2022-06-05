@@ -14,7 +14,7 @@ public:
 	double getRadius() const;
 	void setRadius(double);
 	void update();
-	vtkSmartPointer<vtkActor> getActor();
+	void setupShape();
 private:
 	double radius;
 	double height;

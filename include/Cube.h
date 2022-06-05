@@ -18,7 +18,7 @@ public:
 	void setYLength(double);
 	void setZLength(double);
 	void update();
-	vtkSmartPointer<vtkActor> getActor();
+	void setupShape();
 private:
 	double xLength;
 	double yLength;

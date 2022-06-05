@@ -20,6 +20,7 @@ double Shape::getY() const { return y; }
 double Shape::getZ() const { return z; }
 int Shape::getID() const { return id; }
 std::string Shape::getName() const { return name; }
+vtkSmartPointer<vtkActor> Shape::getActor() const { return actor; }
 void Shape::setX(double posX) { x = posX; }
 void Shape::setY(double posY) { y = posY; }
 void Shape::setZ(double posZ) { z = posZ; }

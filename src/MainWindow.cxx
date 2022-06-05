@@ -91,7 +91,7 @@ void MainWindow::onDrawClicked() {
 	Shape* shape = createShape(ui->buttonGroup->checkedId());
 	if (shape == nullptr)
 		return;
-
+	shape->setupShape();
 	vtkSmartPointer<vtkActor> actor = shape->getActor();
 
 	int r = 255, g = 0, b = 0;

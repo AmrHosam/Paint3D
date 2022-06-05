@@ -30,7 +30,6 @@ vtkSmartPointer<vtkPolyDataMapper> Cylinder::getMapper() {
 	return mapper;
 }
 
-vtkSmartPointer<vtkActor> Cylinder::getActor() {
+void Cylinder::setupShape() {
 	actor->SetMapper(getMapper());
-	return actor;
 }

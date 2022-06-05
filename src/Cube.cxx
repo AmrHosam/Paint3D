@@ -36,7 +36,6 @@ vtkSmartPointer<vtkPolyDataMapper> Cube::getMapper() {
 	return mapper;
 }
 
-vtkSmartPointer<vtkActor> Cube::getActor() {
+void Cube::setupShape() {
 	actor->SetMapper(getMapper());
-	return actor;
 }
