@@ -135,15 +135,20 @@ void MainWindow::onRadioBtnChecked(int id) {
 }
 
 void MainWindow::onColorClicked() {
-	int r = 0;
-	int g = 0;
-	int b = 0;
+	int r = 0, g = 0, b = 0;
 	QColor color = QColorDialog::getColor();
 	if (color.isValid()) {
 		color.getRgb(&r, &g, &b);
-		cout << r << "  " << g << "  " << b << "\n";
 		std::string styleSheet = "background-color: rgb(" + std::to_string(r) + ", " + std::to_string(g) + ", " + std::to_string(b) + ");";
 		ui->color_button->setStyleSheet(QString::fromUtf8(styleSheet.c_str()));
+
+		//change the color of the selected shapes if any
+		std::vector<Shape*> selectedShapes(0);
+		getSelectedShapes(selectedShapes);
+		for (int i = 0; i < selectedShapes.size(); i++) {
+			selectedShapes[i]->getActor()->GetProperty()->SetColor(r / 255.0, g / 255.0, b / 255.0);
+			mRenderWindow->Render();
+		}
 	}
 
 }
