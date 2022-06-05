@@ -22,7 +22,7 @@ public:
 	void setY(double);
 	void setZ(double);
 	virtual void update() = 0;
-	virtual void setupShape() = 0;
+	void setupShape();
 	virtual ~Shape();
 protected:
 	double x;

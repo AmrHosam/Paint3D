@@ -7,14 +7,13 @@
 class Cone : public Shape
 {
 private:
-	vtkSmartPointer<vtkPolyDataMapper> getMapper();
+	vtkSmartPointer<vtkPolyDataMapper> getMapper() override;
 public:
 	Cone();
 	Cone(int shapeId, double x, double y, double z, double r, double h);
 	double getRadius() const;
 	void setRadius(double);
-	void update();
-	void setupShape();
+	void update() override;
 private:
 	double radius;
 	double height;

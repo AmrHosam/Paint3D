@@ -27,7 +27,3 @@ vtkSmartPointer<vtkPolyDataMapper> Cone::getMapper() {
 	mapper->SetInputData(src->GetOutput());
 	return mapper;
 }
-
-void Cone::setupShape() {
-	actor->SetMapper(getMapper());
-}

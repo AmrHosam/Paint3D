@@ -7,7 +7,7 @@
 class Cube : public Shape
 {
 private:
-	vtkSmartPointer<vtkPolyDataMapper> getMapper();
+	vtkSmartPointer<vtkPolyDataMapper> getMapper() override;
 public:
 	Cube();
 	Cube(int shapeId, double x, double y, double z, double lx, double ly, double lz);
@@ -17,8 +17,7 @@ public:
 	void setXLength(double);
 	void setYLength(double);
 	void setZLength(double);
-	void update();
-	void setupShape();
+	void update() override;
 private:
 	double xLength;
 	double yLength;

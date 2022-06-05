@@ -24,4 +24,7 @@ vtkSmartPointer<vtkActor> Shape::getActor() const { return actor; }
 void Shape::setX(double posX) { x = posX; }
 void Shape::setY(double posY) { y = posY; }
 void Shape::setZ(double posZ) { z = posZ; }
+void Shape::setupShape() {
+	actor->SetMapper(getMapper());
+}
 Shape::~Shape(){}

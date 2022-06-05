@@ -14,7 +14,6 @@ public:
 	double getRadius() const;
 	void setRadius(double);
 	void update() override;
-	void setupShape() override;
 private:
 	double radius;
 	vtkSmartPointer<vtkSphereSource> src;
