@@ -42,6 +42,10 @@ public slots:
 	void onColorClicked();
 	void onClearClicked();
 	void onRadioBtnChecked(int);
+
+	void onXPosChange(double);
+	void onYPosChange(double);
+	void onZPosChange(double);
 };
 
 #endif // MAINWINDOW_H

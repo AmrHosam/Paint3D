@@ -42,6 +42,13 @@ MainWindow::MainWindow(QWidget *parent) :
 	QObject::connect(ui->clear_button, &QPushButton::clicked,
 		this, &MainWindow::onClearClicked);
 	QObject::connect(ui->buttonGroup, static_cast<void(QButtonGroup::*)(int)>(&QButtonGroup::buttonClicked), this, &MainWindow::onRadioBtnChecked);
+	
+	QObject::connect(ui->xPosition_spinBox, static_cast<void(QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), 
+		this, &MainWindow::onXPosChange);
+	QObject::connect(ui->yPosition_spinBox, static_cast<void(QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged),
+		this, &MainWindow::onYPosChange);
+	QObject::connect(ui->zPosition_spinBox, static_cast<void(QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged),
+		this, &MainWindow::onZPosChange);
 }
 
 MainWindow::~MainWindow()
@@ -130,7 +137,6 @@ void MainWindow::onDrawClicked() {
 }
 
 void MainWindow::onRadioBtnChecked(int id) {
-	cout << id << "\n";
 	ui->stackedWidget->setCurrentIndex(id);
 }
 
@@ -161,5 +167,33 @@ void MainWindow::onClearClicked() {
 		shapesMap.erase(shapes[i]->getID());
 	}
 	removeSelectedRows();
+	mRenderWindow->Render();
+}
+
+void MainWindow::onXPosChange(double x) {
+	std::vector<Shape*> selectedShapes(0);
+	getSelectedShapes(selectedShapes);
+	for (int i = 0; i < selectedShapes.size(); i++) {
+		selectedShapes[i]->setX(x);
+		selectedShapes[i]->update();
+	}
+	mRenderWindow->Render();
+}
+void MainWindow::onYPosChange(double y) {
+	std::vector<Shape*> selectedShapes(0);
+	getSelectedShapes(selectedShapes);
+	for (int i = 0; i < selectedShapes.size(); i++) {
+		selectedShapes[i]->setY(y);
+		selectedShapes[i]->update();
+	}
+	mRenderWindow->Render();
+}
+void MainWindow::onZPosChange(double z) {
+	std::vector<Shape*> selectedShapes(0);
+	getSelectedShapes(selectedShapes);
+	for (int i = 0; i < selectedShapes.size(); i++) {
+		selectedShapes[i]->setZ(z);
+		selectedShapes[i]->update();
+	}
 	mRenderWindow->Render();
 }
