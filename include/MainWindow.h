@@ -22,6 +22,8 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
 	Shape* createShape(int);
+	void addShape(Shape* shape);
+	Shape* getShapeById(int shapeId);
     ~MainWindow();
 
 private:
@@ -30,6 +32,8 @@ private:
 	vtkSmartPointer<vtkRenderer> mRenderer;
 	vtkSmartPointer<QVTKInteractor> mInteractor;
 	vtkSmartPointer<vtkInteractorStyleTrackballCamera> mInteractorStyle;
+	int numberOfShapes;
+	std::map<int, Shape*> shapesMap;
 
 public slots:
 	void onDrawClicked();

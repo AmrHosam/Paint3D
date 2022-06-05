@@ -6,16 +6,16 @@ Cube::Cube() :
 	zLength(1),
 	src(vtkSmartPointer<vtkCubeSource>::New()){}
 
-Cube::Cube(double x, double y, double z, double lx, double ly, double lz) :
-	Shape(x,y,z),
+Cube::Cube(int shapeId, double x, double y, double z, double lx, double ly, double lz) :
+	Shape(shapeId,x,y,z, "Cube_" + std::to_string(shapeId)),
 	xLength(lx),
 	yLength(ly),
 	zLength(lz),
 	src(vtkSmartPointer<vtkCubeSource>::New()) {}
 
-double Cube::getXLength() { return xLength; }
-double Cube::getYLength() { return yLength; }
-double Cube::getZLength() { return zLength; }
+double Cube::getXLength() const { return xLength; }
+double Cube::getYLength() const { return yLength; }
+double Cube::getZLength() const { return zLength; }
 
 void Cube::setXLength(double lx) { xLength = lx; }
 void Cube::setYLength(double ly) { yLength = ly; }

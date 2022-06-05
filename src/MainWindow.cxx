@@ -13,7 +13,8 @@ MainWindow::MainWindow(QWidget *parent) :
 	mRenderWindow(vtkSmartPointer<vtkGenericOpenGLRenderWindow>::New()),
 	mRenderer(vtkSmartPointer<vtkRenderer>::New()),
 	mInteractor(vtkSmartPointer<QVTKInteractor>::New()),
-	mInteractorStyle(vtkSmartPointer<vtkInteractorStyleTrackballCamera>::New())
+	mInteractorStyle(vtkSmartPointer<vtkInteractorStyleTrackballCamera>::New()),
+	numberOfShapes(1)
 {
 	ui->setupUi(this);
 	QMainWindow::showMaximized();
@@ -48,40 +49,58 @@ MainWindow::~MainWindow()
 	delete ui;
 }
 
+void MainWindow::addShape(Shape* shape) {
+	shapesMap[numberOfShapes++] = shape;
+}
+
+Shape* MainWindow::getShapeById(int shapeId) {
+	std::map<int, Shape*>::iterator it = shapesMap.find(shapeId);
+	if (it != shapesMap.end())
+		return it->second;
+	return nullptr;
+}
+
 Shape* MainWindow::createShape(int type) {
 	double x = ui->xPosition_spinBox->value();
 	double y = ui->yPosition_spinBox->value();
 	double z = ui->zPosition_spinBox->value();
+	Shape* shape = nullptr;
 	switch (type)
 	{
 	case 0 :
-		return new Sphere(x, y, z, ui->sphereRadius_spinBox->value());
+		shape = new Sphere(numberOfShapes, x, y, z, ui->sphereRadius_spinBox->value());
+		break;
 	case 1 :
-		return new Cone(x, y, z, ui->coneRadius_spinBox->value(), ui->coneLength_spinBox->value());
+		shape = new Cone(numberOfShapes, x, y, z, ui->coneRadius_spinBox->value(), ui->coneLength_spinBox->value());
+		break;
 	case 2 :
-		return new Cylinder(x, y, z, ui->cylinderRadius_spinBox->value(), ui->cylinderLength_spinBox->value());
+		shape = new Cylinder(numberOfShapes, x, y, z, ui->cylinderRadius_spinBox->value(), ui->cylinderLength_spinBox->value());
+		break;
 	case 3 :
-		return new Cube(x, y, z, ui->cubeLength1_spinBox->value(), ui->cubeLength2_spinBox->value(), ui->cubeLength3_spinBox->value());
+		shape = new Cube(numberOfShapes, x, y, z, ui->cubeLength1_spinBox->value(), ui->cubeLength2_spinBox->value(), ui->cubeLength3_spinBox->value());
+		break;
 	default:
-		return new Sphere();
+		return shape;
 	}
+	addShape(shape);
+	return shape;
 }
 
 void MainWindow::onDrawClicked() {
-	double x = ui->xPosition_spinBox->value();
-	cout << "the x = " << x << "\n";
-	double y = ui->yPosition_spinBox->value();
-	cout << "the y = " << y << "\n";
-	double z = ui->zPosition_spinBox->value();
-	cout << "the z = " << z << "\n";
+
 	Shape* shape = createShape(ui->buttonGroup->checkedId());
+	if (shape == nullptr)
+		return;
+
 	vtkSmartPointer<vtkActor> actor = shape->getActor();
+
 	int r = 255, g = 0, b = 0;
 	QColor color = ui->color_button->palette().background().color();
 	if (color.isValid()) {
 		color.getRgb(&r, &g, &b);
 	}
 	actor->GetProperty()->SetColor(r/255.0, g/255.0, b/255.0);
+
 	mRenderer->AddActor(actor);
 	mRenderer->ResetCamera();
 	mRenderWindow->Render();

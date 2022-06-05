@@ -2,12 +2,12 @@
 
 Sphere::Sphere() : radius(1), src(vtkSmartPointer<vtkSphereSource>::New()) {}
 
-Sphere::Sphere(double x, double y, double z, double r) : 
-	Shape(x,y,z),
+Sphere::Sphere(int shapeId, double x, double y, double z, double r) :
+	Shape(shapeId,x,y,z, "Sphere_" + std::to_string(shapeId)),
 	radius(r),
 	src(vtkSmartPointer<vtkSphereSource>::New()) {}
 
-double Sphere::getRadius() { return radius; }
+double Sphere::getRadius() const { return radius; }
 
 void Sphere::setRadius(double r) { radius = r; }
 

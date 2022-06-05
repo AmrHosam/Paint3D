@@ -5,13 +5,13 @@ Cone::Cone() :
 	height(1),
 	src(vtkSmartPointer<vtkConeSource>::New()){}
 
-Cone::Cone(double x, double y, double z, double r, double h) :
-	Shape(x,y,z),
+Cone::Cone(int shapeId, double x, double y, double z, double r, double h) :
+	Shape(shapeId,x,y,z, "Cone_" + std::to_string(shapeId)),
 	radius(r),
 	height(h),
 	src(vtkSmartPointer<vtkConeSource>::New()) {}
 
-double Cone::getRadius() { return radius; }
+double Cone::getRadius() const{ return radius; }
 
 void Cone::setRadius(double r) { radius = r; }
 

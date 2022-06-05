@@ -7,13 +7,13 @@ Cylinder::Cylinder() :
 	height(1),
 	src(vtkSmartPointer<vtkCylinderSource>::New()){}
 
-Cylinder::Cylinder(double x, double y, double z, double r, double h) :
-	Shape(x,y,z),
+Cylinder::Cylinder(int shapeId, double x, double y, double z, double r, double h) :
+	Shape(shapeId,x,y,z, "Cylinder_" + std::to_string(shapeId)),
 	radius(r),
 	height(h),
 	src(vtkSmartPointer<vtkCylinderSource>::New()) {}
 
-double Cylinder::getRadius() { return radius; }
+double Cylinder::getRadius() const{ return radius; }
 
 void Cylinder::setRadius(double r) { radius = r; }
 

@@ -7,23 +7,28 @@
 
 class Shape
 {
+protected:
+	virtual vtkSmartPointer<vtkPolyDataMapper> getMapper() = 0;
 public:
 	Shape();
-	Shape(double, double, double);
-	double getX();
-	double getY();
-	double getZ();
+	Shape(int, double, double, double, std::string);
+	double getX() const;
+	double getY() const;
+	double getZ() const;
+	int getID() const;
+	std::string getName() const;
 	void setX(double);
 	void setY(double);
 	void setZ(double);
 	virtual void update() = 0;
-	virtual vtkSmartPointer<vtkPolyDataMapper> getMapper() = 0;
 	virtual vtkSmartPointer<vtkActor> getActor() = 0;
 	virtual ~Shape();
 protected:
 	double x;
 	double y;
 	double z;
+	int id;
+	std::string name;
 	vtkSmartPointer<vtkPolyDataMapper> mapper;
 	vtkSmartPointer<vtkActor> actor;
 };

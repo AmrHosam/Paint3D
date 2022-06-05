@@ -6,17 +6,18 @@
 
 class Cube : public Shape
 {
+private:
+	vtkSmartPointer<vtkPolyDataMapper> getMapper();
 public:
 	Cube();
-	Cube(double x, double y, double z, double lx, double ly, double lz);
-	double getXLength();
+	Cube(int shapeId, double x, double y, double z, double lx, double ly, double lz);
+	double getXLength() const;
+	double getYLength() const;
+	double getZLength() const;
 	void setXLength(double);
-	double getYLength();
 	void setYLength(double);
-	double getZLength();
 	void setZLength(double);
 	void update();
-	vtkSmartPointer<vtkPolyDataMapper> getMapper();
 	vtkSmartPointer<vtkActor> getActor();
 private:
 	double xLength;

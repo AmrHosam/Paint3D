@@ -6,13 +6,14 @@
 
 class Sphere : public Shape
 {
+private:
+	vtkSmartPointer<vtkPolyDataMapper> getMapper() override;
 public:
 	Sphere();
-	Sphere(double x, double y, double z, double r);
-	double getRadius();
+	Sphere(int shapeId, double x, double y, double z, double r);
+	double getRadius() const;
 	void setRadius(double);
 	void update() override;
-	vtkSmartPointer<vtkPolyDataMapper> getMapper() override;
 	vtkSmartPointer<vtkActor> getActor() override;
 private:
 	double radius;
