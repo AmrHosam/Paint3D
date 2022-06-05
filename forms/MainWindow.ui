@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Paint3D</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../images/windowIcon.jpg</normaloff>../images/windowIcon.jpg</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
@@ -33,7 +37,7 @@
        <property name="geometry">
         <rect>
          <x>40</x>
-         <y>400</y>
+         <y>450</y>
          <width>271</width>
          <height>24</height>
         </rect>
@@ -46,16 +50,26 @@
        <property name="geometry">
         <rect>
          <x>40</x>
-         <y>40</y>
+         <y>30</y>
          <width>271</width>
-         <height>22</height>
+         <height>61</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_3">
         <item>
          <widget class="QRadioButton" name="sphere_radioBtn">
           <property name="text">
-           <string>Sphere</string>
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>../images/sphere.png</normaloff>../images/sphere.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>25</width>
+            <height>25</height>
+           </size>
           </property>
           <property name="checked">
            <bool>true</bool>
@@ -68,7 +82,17 @@
         <item>
          <widget class="QRadioButton" name="cone_radioBtn">
           <property name="text">
-           <string>Cone</string>
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>../images/cone.png</normaloff>../images/cone.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>25</width>
+            <height>25</height>
+           </size>
           </property>
           <attribute name="buttonGroup">
            <string notr="true">buttonGroup</string>
@@ -78,7 +102,17 @@
         <item>
          <widget class="QRadioButton" name="cylinder_radioBtn">
           <property name="text">
-           <string>Cylinder</string>
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>../images/cylinder.png</normaloff>../images/cylinder.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>25</width>
+            <height>25</height>
+           </size>
           </property>
           <attribute name="buttonGroup">
            <string notr="true">buttonGroup</string>
@@ -88,7 +122,17 @@
         <item>
          <widget class="QRadioButton" name="cube_radioBtn">
           <property name="text">
-           <string>Cube</string>
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>../images/cube.png</normaloff>../images/cube.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>25</width>
+            <height>25</height>
+           </size>
           </property>
           <attribute name="buttonGroup">
            <string notr="true">buttonGroup</string>
@@ -101,7 +145,7 @@
        <property name="geometry">
         <rect>
          <x>40</x>
-         <y>80</y>
+         <y>120</y>
          <width>271</width>
          <height>111</height>
         </rect>
@@ -180,13 +224,13 @@
        <property name="geometry">
         <rect>
          <x>40</x>
-         <y>220</y>
+         <y>260</y>
          <width>271</width>
          <height>111</height>
         </rect>
        </property>
        <property name="currentIndex">
-        <number>2</number>
+        <number>3</number>
        </property>
        <widget class="QWidget" name="Sphere">
         <widget class="QGroupBox" name="groupBox_3">
@@ -441,7 +485,7 @@
        <property name="geometry">
         <rect>
          <x>60</x>
-         <y>350</y>
+         <y>390</y>
          <width>231</width>
          <height>26</height>
         </rect>
