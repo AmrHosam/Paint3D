@@ -554,6 +554,9 @@
          <height>101</height>
         </rect>
        </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectRows</enum>
+       </property>
        <property name="columnCount">
         <number>2</number>
        </property>
