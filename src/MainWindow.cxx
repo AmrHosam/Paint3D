@@ -104,6 +104,10 @@ void MainWindow::onDrawClicked() {
 	mRenderer->AddActor(actor);
 	mRenderer->ResetCamera();
 	mRenderWindow->Render();
+
+	ui->shapes_table->insertRow(ui->shapes_table->rowCount());
+	ui->shapes_table->setItem(ui->shapes_table->rowCount() - 1, 0, new QTableWidgetItem(std::to_string(shape->getID()).c_str()));
+	ui->shapes_table->setItem(ui->shapes_table->rowCount() - 1, 1, new QTableWidgetItem(shape->getName().c_str()));
 }
 
 void MainWindow::onRadioBtnChecked(int id) {
