@@ -60,6 +60,25 @@ Shape* MainWindow::getShapeById(int shapeId) {
 	return nullptr;
 }
 
+void MainWindow::getSelectedShapes(std::vector<Shape*> &shapes){
+	QList<QTableWidgetItem *> list = ui->shapes_table->selectedItems();
+	for (int i = 0; i < list.size(); i++) {
+		if (list[i]->column() == 0) {
+			int id = std::atoi(list[i]->text().toStdString().c_str());
+			Shape* shape = getShapeById(id);
+			if (shape != nullptr)
+				shapes.push_back(shape);
+		}
+	}
+}
+
+void MainWindow::removeSelectedRows() {
+	QList<QTableWidgetItem *> list = ui->shapes_table->selectedItems();
+	for (int i = 0; i < list.size(); i++) {
+		ui->shapes_table->removeRow(list[i]->row());
+	}
+}
+
 Shape* MainWindow::createShape(int type) {
 	double x = ui->xPosition_spinBox->value();
 	double y = ui->yPosition_spinBox->value();
@@ -130,6 +149,12 @@ void MainWindow::onColorClicked() {
 }
 
 void MainWindow::onClearClicked() {
-	mRenderer->RemoveAllViewProps();
+	std::vector<Shape*> shapes(0);
+	getSelectedShapes(shapes);
+	for (int i = 0; i < shapes.size(); i++) {
+		mRenderer->RemoveActor(shapes[i]->getActor());
+		shapesMap.erase(shapes[i]->getID());
+	}
+	removeSelectedRows();
 	mRenderWindow->Render();
 }

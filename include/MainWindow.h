@@ -24,6 +24,8 @@ public:
 	Shape* createShape(int);
 	void addShape(Shape* shape);
 	Shape* getShapeById(int shapeId);
+	void getSelectedShapes(std::vector<Shape*> &shapes);
+	void removeSelectedRows();
     ~MainWindow();
 
 private:
