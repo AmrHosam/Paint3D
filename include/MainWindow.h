@@ -46,6 +46,18 @@ public slots:
 	void onXPosChange(double);
 	void onYPosChange(double);
 	void onZPosChange(double);
+
+	void onSphereRediusChange(double);
+
+	void onConeRediusChange(double);
+	void onConeHeightChange(double);
+
+	void onCylinderRediusChange(double);
+	void onCylinderHeightChange(double);
+
+	void onCubeXLengthChange(double);
+	void onCubeYLengthChange(double);
+	void onCubeZLengthChange(double);
 };
 
 #endif // MAINWINDOW_H

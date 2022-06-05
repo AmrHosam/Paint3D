@@ -49,6 +49,26 @@ MainWindow::MainWindow(QWidget *parent) :
 		this, &MainWindow::onYPosChange);
 	QObject::connect(ui->zPosition_spinBox, static_cast<void(QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged),
 		this, &MainWindow::onZPosChange);
+
+	QObject::connect(ui->sphereRadius_spinBox, static_cast<void(QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged),
+			this, &MainWindow::onSphereRediusChange);
+
+	QObject::connect(ui->coneRadius_spinBox, static_cast<void(QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged),
+		this, &MainWindow::onConeRediusChange);
+	QObject::connect(ui->coneLength_spinBox, static_cast<void(QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged),
+		this, &MainWindow::onConeHeightChange);
+
+	QObject::connect(ui->cylinderRadius_spinBox, static_cast<void(QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged),
+		this, &MainWindow::onCylinderRediusChange);
+	QObject::connect(ui->cylinderLength_spinBox, static_cast<void(QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged),
+		this, &MainWindow::onCylinderHeightChange);
+
+	QObject::connect(ui->cubeLength1_spinBox, static_cast<void(QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged),
+		this, &MainWindow::onCubeXLengthChange);
+	QObject::connect(ui->cubeLength2_spinBox, static_cast<void(QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged),
+		this, &MainWindow::onCubeYLengthChange);
+	QObject::connect(ui->cubeLength3_spinBox, static_cast<void(QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged),
+		this, &MainWindow::onCubeZLengthChange);
 }
 
 MainWindow::~MainWindow()
@@ -194,6 +214,106 @@ void MainWindow::onZPosChange(double z) {
 	for (int i = 0; i < selectedShapes.size(); i++) {
 		selectedShapes[i]->setZ(z);
 		selectedShapes[i]->update();
+	}
+	mRenderWindow->Render();
+}
+
+void MainWindow::onSphereRediusChange(double r) {
+	std::vector<Shape*> selectedShapes(0);
+	getSelectedShapes(selectedShapes);
+	for (int i = 0; i < selectedShapes.size(); i++) {
+		Sphere* sphere = dynamic_cast<Sphere*>(selectedShapes[i]);
+		if (sphere) {
+			sphere->setRadius(r);
+			sphere->update();
+		}
+	}
+	mRenderWindow->Render();
+}
+
+void MainWindow::onConeRediusChange(double r) {
+	std::vector<Shape*> selectedShapes(0);
+	getSelectedShapes(selectedShapes);
+	for (int i = 0; i < selectedShapes.size(); i++) {
+		Cone* shape = dynamic_cast<Cone*>(selectedShapes[i]);
+		if (shape) {
+			shape->setRadius(r);
+			shape->update();
+		}
+	}
+	mRenderWindow->Render();
+}
+void MainWindow::onConeHeightChange(double h) {
+	std::vector<Shape*> selectedShapes(0);
+	getSelectedShapes(selectedShapes);
+	for (int i = 0; i < selectedShapes.size(); i++) {
+		Cone* shape = dynamic_cast<Cone*>(selectedShapes[i]);
+		if (shape) {
+			shape->setHeight(h);
+			shape->update();
+		}
+	}
+	mRenderWindow->Render();
+}
+
+void MainWindow::onCylinderRediusChange(double r) {
+	std::vector<Shape*> selectedShapes(0);
+	getSelectedShapes(selectedShapes);
+	for (int i = 0; i < selectedShapes.size(); i++) {
+		Cylinder* shape = dynamic_cast<Cylinder*>(selectedShapes[i]);
+		if (shape) {
+			shape->setRadius(r);
+			shape->update();
+		}
+	}
+	mRenderWindow->Render();
+}
+void MainWindow::onCylinderHeightChange(double h) {
+	std::vector<Shape*> selectedShapes(0);
+	getSelectedShapes(selectedShapes);
+	for (int i = 0; i < selectedShapes.size(); i++) {
+		Cylinder* shape = dynamic_cast<Cylinder*>(selectedShapes[i]);
+		if (shape) {
+			shape->setHeight(h);
+			shape->update();
+		}
+	}
+	mRenderWindow->Render();
+}
+
+void MainWindow::onCubeXLengthChange(double l) {
+	std::vector<Shape*> selectedShapes(0);
+	getSelectedShapes(selectedShapes);
+	for (int i = 0; i < selectedShapes.size(); i++) {
+		Cube* shape = dynamic_cast<Cube*>(selectedShapes[i]);
+		if (shape) {
+			shape->setXLength(l);
+			shape->update();
+		}
+	}
+	mRenderWindow->Render();
+}
+void MainWindow::onCubeYLengthChange(double l) {
+	std::vector<Shape*> selectedShapes(0);
+	getSelectedShapes(selectedShapes);
+	for (int i = 0; i < selectedShapes.size(); i++) {
+		Cube* shape = dynamic_cast<Cube*>(selectedShapes[i]);
+		if (shape) {
+			shape->setYLength(l);
+			shape->update();
+		}
+	}
+	mRenderWindow->Render();
+}
+void MainWindow::onCubeZLengthChange(double l) {
+	std::vector<Shape*> selectedShapes(0);
+	getSelectedShapes(selectedShapes);
+	for (int i = 0; i < selectedShapes.size(); i++) {
+		Cube* shape = dynamic_cast<Cube*>(selectedShapes[i]);
+		if (shape) {
+			shape->setZLength(l);
+			shape->update();
+		}
 	}
 	mRenderWindow->Render();
 }
