@@ -61,11 +61,20 @@ else()
   set(CMAKE_AUTOUIC ON)
 endif()
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
+set(FORMS_DIR "${CMAKE_SOURCE_DIR}/forms")
+set(INCLUDE_DIR "${CMAKE_SOURCE_DIR}/include")
+set(SOURCE_DIR "${CMAKE_SOURCE_DIR}/src")
 
-file(GLOB UI_FILES *.ui)
-file(GLOB QT_WRAP *.h)
-file(GLOB CXX_FILES *.cxx)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
+include_directories(${INCLUDE_DIR})
+include_directories(${SOURCE_DIR})
+include_directories(${FORMS_DIR})
+
+file(GLOB UI_FILES "${FORMS_DIR}/*.ui")
+file(GLOB QT_WRAP "${INCLUDE_DIR}/*.h")
+file(GLOB CXX_FILES "${SOURCE_DIR}/*.cxx")
+
+set(CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_AUTOUIC_SEARCH_PATHS} ${FORMS_DIR})
 
 # For VTK versions greater than or equal to 8.90.0:
 #  CMAKE_AUTOUIC is ON so we handle uic automatically for Qt targets.
