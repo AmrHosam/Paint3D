@@ -38,6 +38,8 @@ MainWindow::MainWindow(QWidget *parent) :
 		this, &MainWindow::onDrawClicked);
 	QObject::connect(ui->color_button, &QPushButton::clicked,
 		this, &MainWindow::onColorClicked);
+	QObject::connect(ui->clear_button, &QPushButton::clicked,
+		this, &MainWindow::onClearClicked);
 	QObject::connect(ui->buttonGroup, static_cast<void(QButtonGroup::*)(int)>(&QButtonGroup::buttonClicked), this, &MainWindow::onRadioBtnChecked);
 }
 
@@ -102,4 +104,9 @@ void MainWindow::onColorClicked() {
 		ui->color_button->setStyleSheet(QString::fromUtf8(styleSheet.c_str()));
 	}
 
+}
+
+void MainWindow::onClearClicked() {
+	mRenderer->RemoveAllViewProps();
+	mRenderWindow->Render();
 }
