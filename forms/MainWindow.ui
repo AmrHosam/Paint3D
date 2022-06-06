@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>880</width>
-    <height>682</height>
+    <width>884</width>
+    <height>761</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -267,8 +267,17 @@
            </item>
            <item>
             <widget class="QDoubleSpinBox" name="sphereRadius_spinBox">
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="minimum">
+              <double>0.001000000000000</double>
+             </property>
              <property name="maximum">
               <double>100.000000000000000</double>
+             </property>
+             <property name="value">
+              <double>0.001000000000000</double>
              </property>
             </widget>
            </item>
@@ -310,8 +319,17 @@
              </item>
              <item>
               <widget class="QDoubleSpinBox" name="coneRadius_spinBox">
+               <property name="decimals">
+                <number>3</number>
+               </property>
+               <property name="minimum">
+                <double>0.001000000000000</double>
+               </property>
                <property name="maximum">
                 <double>100.000000000000000</double>
+               </property>
+               <property name="value">
+                <double>0.001000000000000</double>
                </property>
               </widget>
              </item>
@@ -328,8 +346,17 @@
              </item>
              <item>
               <widget class="QDoubleSpinBox" name="coneLength_spinBox">
+               <property name="decimals">
+                <number>3</number>
+               </property>
+               <property name="minimum">
+                <double>0.001000000000000</double>
+               </property>
                <property name="maximum">
                 <double>100.000000000000000</double>
+               </property>
+               <property name="value">
+                <double>0.001000000000000</double>
                </property>
               </widget>
              </item>
@@ -373,8 +400,17 @@
              </item>
              <item>
               <widget class="QDoubleSpinBox" name="cylinderRadius_spinBox">
+               <property name="decimals">
+                <number>3</number>
+               </property>
+               <property name="minimum">
+                <double>0.001000000000000</double>
+               </property>
                <property name="maximum">
                 <double>100.000000000000000</double>
+               </property>
+               <property name="value">
+                <double>0.001000000000000</double>
                </property>
               </widget>
              </item>
@@ -391,6 +427,12 @@
              </item>
              <item>
               <widget class="QDoubleSpinBox" name="cylinderLength_spinBox">
+               <property name="decimals">
+                <number>3</number>
+               </property>
+               <property name="minimum">
+                <double>0.001000000000000</double>
+               </property>
                <property name="maximum">
                 <double>100.000000000000000</double>
                </property>
@@ -436,6 +478,12 @@
              </item>
              <item>
               <widget class="QDoubleSpinBox" name="cubeLength1_spinBox">
+               <property name="decimals">
+                <number>3</number>
+               </property>
+               <property name="minimum">
+                <double>0.001000000000000</double>
+               </property>
                <property name="maximum">
                 <double>100.000000000000000</double>
                </property>
@@ -454,6 +502,12 @@
              </item>
              <item>
               <widget class="QDoubleSpinBox" name="cubeLength2_spinBox">
+               <property name="decimals">
+                <number>3</number>
+               </property>
+               <property name="minimum">
+                <double>0.001000000000000</double>
+               </property>
                <property name="maximum">
                 <double>100.000000000000000</double>
                </property>
@@ -472,6 +526,12 @@
              </item>
              <item>
               <widget class="QDoubleSpinBox" name="cubeLength3_spinBox">
+               <property name="decimals">
+                <number>3</number>
+               </property>
+               <property name="minimum">
+                <double>0.001000000000000</double>
+               </property>
                <property name="maximum">
                 <double>100.000000000000000</double>
                </property>
@@ -551,8 +611,11 @@
          <x>40</x>
          <y>490</y>
          <width>271</width>
-         <height>101</height>
+         <height>141</height>
         </rect>
+       </property>
+       <property name="editTriggers">
+        <set>QAbstractItemView::NoEditTriggers</set>
        </property>
        <property name="selectionBehavior">
         <enum>QAbstractItemView::SelectRows</enum>
@@ -560,8 +623,20 @@
        <property name="columnCount">
         <number>2</number>
        </property>
-       <attribute name="horizontalHeaderStretchLastSection">
+       <attribute name="horizontalHeaderCascadingSectionResizes">
         <bool>true</bool>
+       </attribute>
+       <attribute name="horizontalHeaderMinimumSectionSize">
+        <number>30</number>
+       </attribute>
+       <attribute name="horizontalHeaderDefaultSectionSize">
+        <number>120</number>
+       </attribute>
+       <attribute name="horizontalHeaderHighlightSections">
+        <bool>true</bool>
+       </attribute>
+       <attribute name="horizontalHeaderStretchLastSection">
+        <bool>false</bool>
        </attribute>
        <column>
         <property name="text">
@@ -583,7 +658,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>880</width>
+     <width>884</width>
      <height>22</height>
     </rect>
    </property>
