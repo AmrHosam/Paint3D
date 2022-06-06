@@ -6,9 +6,6 @@
 #include <vtkRenderer.h>
 #include <QVTKInteractor.h>
 #include <vtkInteractorStyleTrackballCamera.h>
-#include <vtkSphereSource.h>
-#include <vtkPolyDataMapper.h>
-#include <vtkActor.h>
 #include <vtkProperty.h>
 #include "Shape.h"
 
