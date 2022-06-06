@@ -1,10 +1,5 @@
 #include "Cone.h"
 
-Cone::Cone() :
-	radius(1),
-	height(1),
-	src(vtkSmartPointer<vtkConeSource>::New()){}
-
 Cone::Cone(int shapeId, double x, double y, double z, double r, double h) :
 	Shape(shapeId,x,y,z, "Cone_" + std::to_string(shapeId)),
 	radius(r),

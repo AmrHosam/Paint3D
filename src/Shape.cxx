@@ -1,12 +1,5 @@
 #include "Shape.h"
 
-Shape::Shape() :
-	x(0),
-	y(0),
-	z(0),
-	id(0),
-	mapper(vtkSmartPointer<vtkPolyDataMapper>::New()),
-	actor(vtkSmartPointer<vtkActor>::New()){}
 Shape::Shape(int shapeId, double posX, double posY, double posZ, std::string shapeName) : 
 	x(posX),
 	y(posY),

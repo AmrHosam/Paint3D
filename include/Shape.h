@@ -4,23 +4,21 @@
 #include <vtkPolyDataMapper.h>
 #include <vtkActor.h>
 
-
 class Shape
 {
 protected:
 	virtual vtkSmartPointer<vtkPolyDataMapper> getMapper() = 0;
 public:
-	Shape();
-	Shape(int, double, double, double, std::string);
+	Shape(int shapeId, double posX, double posY, double posZ, std::string shapeName);
 	double getX() const;
 	double getY() const;
 	double getZ() const;
 	int getID() const;
 	std::string getName() const;
 	vtkSmartPointer<vtkActor> getActor() const;
-	void setX(double);
-	void setY(double);
-	void setZ(double);
+	void setX(double posX);
+	void setY(double posY);
+	void setZ(double posZ);
 	virtual void update() = 0;
 	void setupShape();
 	virtual ~Shape();

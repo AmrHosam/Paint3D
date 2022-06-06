@@ -1,7 +1,5 @@
 #include "Sphere.h"
 
-Sphere::Sphere() : radius(1), src(vtkSmartPointer<vtkSphereSource>::New()) {}
-
 Sphere::Sphere(int shapeId, double x, double y, double z, double r) :
 	Shape(shapeId,x,y,z, "Sphere_" + std::to_string(shapeId)),
 	radius(r),

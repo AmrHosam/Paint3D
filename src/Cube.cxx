@@ -1,11 +1,5 @@
 #include "Cube.h"
 
-Cube::Cube() :
-	xLength(1),
-	yLength(1),
-	zLength(1),
-	src(vtkSmartPointer<vtkCubeSource>::New()){}
-
 Cube::Cube(int shapeId, double x, double y, double z, double lx, double ly, double lz) :
 	Shape(shapeId,x,y,z, "Cube_" + std::to_string(shapeId)),
 	xLength(lx),
