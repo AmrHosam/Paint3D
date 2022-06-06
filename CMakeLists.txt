@@ -1,11 +1,6 @@
 
 cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
 
-if(POLICY CMP0020)
-  cmake_policy(SET CMP0020 NEW)
-  cmake_policy(SET CMP0071 NEW)
-endif()
-
 PROJECT(Paint3D)
 
 find_package(VTK COMPONENTS 
@@ -65,7 +60,6 @@ set(FORMS_DIR "${CMAKE_SOURCE_DIR}/forms")
 set(INCLUDE_DIR "${CMAKE_SOURCE_DIR}/include")
 set(SOURCE_DIR "${CMAKE_SOURCE_DIR}/src")
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
 include_directories(${INCLUDE_DIR})
 include_directories(${SOURCE_DIR})
 include_directories(${FORMS_DIR})
@@ -76,21 +70,13 @@ file(GLOB CXX_FILES "${SOURCE_DIR}/*.cxx")
 
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_AUTOUIC_SEARCH_PATHS} ${FORMS_DIR})
 
-# For VTK versions greater than or equal to 8.90.0:
-#  CMAKE_AUTOUIC is ON so we handle uic automatically for Qt targets.
-#  CMAKE_AUTOMOC is ON so we handle moc automatically for Qt targets.
-# However we have to do the following for VTK versions less than 8.90.0,
-#  and we also assume, in this case, that Qt5 is being used.
-if (VTK_VERSION VERSION_LESS "8.90.0")
-  qt5_wrap_ui(UISrcs ${EXAMPLE}.ui)
-endif()
 
 if (VTK_VERSION VERSION_LESS "8.90.0")
   # old system
   include(${VTK_USE_FILE})
   # CMAKE_AUTOMOC in ON so the MOC headers will be automatically wrapped.
-  add_executable(RenderWindowUISingleInheritance MACOSX_BUNDLE
-    ${CXX_FILES} ${UISrcs} ${QT_WRAP})
+  add_executable(Paint3D WIN32 MACOSX_BUNDLE
+    ${CXX_FILES} ${QT_WRAP})
   if (Qt${VTK_QT_VERSION}Widgets_VERSION VERSION_LESS "5.11.0")
     qt5_use_modules(Paint3D ${qt_components})
   else()
@@ -101,8 +87,8 @@ else()
   # Prevent a "command line is too long" failure in Windows.
   set(CMAKE_NINJA_FORCE_RESPONSE_FILE "ON" CACHE BOOL "Force Ninja to use response files.")
   # CMAKE_AUTOMOC in ON so the MOC headers will be automatically wrapped.
-  add_executable(Paint3D MACOSX_BUNDLE
-    ${CXX_FILES} ${UISrcs} ${QT_WRAP})
+  add_executable(Paint3D WIN32 MACOSX_BUNDLE
+    ${CXX_FILES} ${QT_WRAP})
   if (Qt${VTK_QT_VERSION}Widgets_VERSION VERSION_LESS "5.11.0")
     qt5_use_modules(Paint3D ${qt_components})
   else()
